@@ -1,7 +1,7 @@
 # Flexible Quadrilateral Mesh Generator (3x3 Case)
 
 <p align="center">
-  <img src="./pics/01.svg" alt="Example of 3x3 mesh" width="800"/>
+  <img src="./pics/02.svg" alt="Example of 3x3 mesh" width="800"/>
 </p>
 
 <p align="center"><strong>Figure 1: Example of 3x3 mesh.</strong></p>
