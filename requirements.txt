@@ -1,0 +1,9 @@
+numpy
+scipy
+matplotlib
+mpmath
+warnings
+ast
+time
+pylab
+mpl_toolkits.mplot3d
