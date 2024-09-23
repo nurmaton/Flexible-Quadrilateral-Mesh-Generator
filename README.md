@@ -11,6 +11,7 @@ A robust Python toolset for generating flexible quadrilateral meshes of equimodu
 
 ## Table of Contents
 - [Overview](#overview)
+- [Overview of the PDF File](#overview-of-the-pdf-file)
 - [Key Features](#key-features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -25,7 +26,20 @@ A robust Python toolset for generating flexible quadrilateral meshes of equimodu
 ## Overview
 This project solves the problem of generating flexible quadrilateral meshes of equimodular elliptic type by utilizing complex mathematical models and optimization techniques. The workflow is divided into several key steps: generating the normals for mesh faces, calculating sample angles, solving optimization problems, validating results through t-values, and transforming angles into vertices for 3D visualization.
 
-The core of the project lies in transforming given angles and constraints into a flexible mesh structure with specific properties (non-self-intersecting, equal moduli, equal amplitudes at common vertices and sum of shifts to be a period). It ensures the quadrilateral mesh generated meets the required geometric conditions.
+The core of the project lies in transforming given angles and constraints into a flexible mesh structure with specific properties (non-self-intersecting, equal moduli, equal amplitudes at common vertices and sum of shifts to be a period). It ensures the quadrilateral mesh generated meets the required geometric conditions. 
+
+## Overview of the PDF File
+### 1: Polynomial System for Deltas
+In the first step, given four angles—$\delta_1$, $\delta_2$, $\delta_3$, and $\delta_4$—a system of four polynomial equations with four unknowns is generated. This system is used to create examples of quadrilateral flexible meshes of the elliptic type. At this stage, only the delta angles are selected to define the mesh structure.
+
+### 2: Polynomial System for Deltas and Dihedral Angles
+Building upon the first step, in this step both the delta angles ($\delta_1$, $\delta_2$, $\delta_3$, $\delta_4$) and the dihedral angles ($\varphi$, $\psi_2$, $\theta$, $\psi_1$) are used. This results in a system of nine polynomial equations with nine unknowns, allowing for the generation of flexible quadrilateral meshes of the elliptic type with more control. Now, we can choose both the delta and dihedral angles, offering greater flexibility in creating the desired mesh type.
+
+### 3: Optimization Problem for Angle Matching
+In this stage, the optimization problem begins. Given a full set of angles—$\delta$, $\alpha$, $\beta$, $\gamma$—as well as the dihedral angles, the goal is to minimize the difference between the given angles and those calculated theoretically, while respecting the constraints imposed by the system of nine equations from step 2.
+
+### 4: Normal-Based Sample Angle Generation
+In the final step, formulas are derived to compute unit normals to the faces of the quadrilateral mesh in various coordinate systems. Using these normals, sample angles of the mesh can be obtained. This is useful when only normals are provided, and not the angles directly.
 
 ## Key Features
 - **Polynomial System Generation:** Ability to generate 4 and 9 polynomial equations for mesh flexibility based on the given deltas and dihedral angles.
