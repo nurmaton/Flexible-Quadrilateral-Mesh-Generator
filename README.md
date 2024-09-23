@@ -51,7 +51,7 @@ The core of the project lies in transforming given angles and constraints into a
 ## Usage
 
 ### Step 1: Normals Generation
-The first step in the workflow is generating the normals to the faces of the quadrilateral mesh. This is done using the `00_normals_generator.py file`. This script generates the normals to the faces of the mesh given a set of angles. It is useful for creating sample meshes to test the optimization process.
+The first step in the workflow is generating the normals to the faces of the quadrilateral mesh. This is done using the `00_normals_generator.py` file. This script generates the normals to the faces of the mesh given a set of angles. If you already have a set of angles, you can skip this step and step 2, starting directly from step 3. However, this step is useful for creating sample normals to test step 2, which generates sample angles based on the given normals.
 
 ### Step 2: Sample Angles Calculation
 Once the normals are given, the next step is to calculate the sample angles based on the provided normals. This is handled by `01_sample_angles_calculator.py`. This step calculates sample angles for the quadrilateral mesh based on given normals in different coordinate systems. These angles serve as an initial set for further optimization. 
