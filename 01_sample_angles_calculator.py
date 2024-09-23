@@ -132,6 +132,11 @@ def calculate_angles(NC, N1, N2, N3, N4, NC1, N21, N41, NC2, N22, N42, NC3, N23,
         delta3 = delta23 - delta2
         delta4 = 360 - delta1 - delta2 - delta3
         Deltas.append([delta1, delta2, delta3, delta4])
+        delta23 = np.degrees(-np.arccos(-N3[1] / sin(theta)) + 2 * np.pi)
+        if 0 < delta23 - delta2 < 180:
+            delta3 = delta23 - delta2
+            delta4 = 360 - delta1 - delta2 - delta3
+            Deltas.append([delta1, delta2, delta3, delta4])
     else:
         delta23 = np.degrees(-np.arccos(-N3[1] / sin(theta)) + 2 * np.pi)
         if 0 < delta23 - delta2 < 180:
@@ -189,44 +194,46 @@ def calculate_angles(NC, N1, N2, N3, N4, NC1, N21, N41, NC2, N22, N42, NC3, N23,
     Gammas.extend([gamma1, gamma2, gamma3, gamma4])
     
     # Calculate beta1, beta2, beta3, and beta4 using the provided formulas (details in documentation).
-    beta1 = np.degrees(np.arccos(
-        cos(alpha1) * cos(gamma1) * cos(delta1) +
-        cos(psi1) * cos(alpha1) * sin(gamma1) * sin(delta1) +
-        cos(phi) * sin(alpha1) * cos(gamma1) * sin(delta1) -
-        cos(phi) * cos(psi1) * sin(alpha1) * sin(gamma1) * cos(delta1) +
-        sin(phi) * sin(psi1) * sin(alpha1) * sin(gamma1)
-    ))
+    for deltas in Deltas:
+        delta1, delta2, delta3, delta4 = deltas
+        beta1 = np.degrees(np.arccos(
+            cos(alpha1) * cos(gamma1) * cos(delta1) +
+            cos(psi1) * cos(alpha1) * sin(gamma1) * sin(delta1) +
+            cos(phi) * sin(alpha1) * cos(gamma1) * sin(delta1) -
+            cos(phi) * cos(psi1) * sin(alpha1) * sin(gamma1) * cos(delta1) +
+            sin(phi) * sin(psi1) * sin(alpha1) * sin(gamma1)
+        ))
 
-    beta2 = np.degrees(np.arccos(
-        cos(alpha2) * cos(gamma2) * cos(delta2) +
-        cos(psi2) * cos(alpha2) * sin(gamma2) * sin(delta2) +
-        cos(phi) * sin(alpha2) * cos(gamma2) * sin(delta2) -
-        cos(phi) * cos(psi2) * sin(alpha2) * sin(gamma2) * cos(delta2) +
-        sin(phi) * sin(psi2) * sin(alpha2) * sin(gamma2)
-    ))
+        beta2 = np.degrees(np.arccos(
+            cos(alpha2) * cos(gamma2) * cos(delta2) +
+            cos(psi2) * cos(alpha2) * sin(gamma2) * sin(delta2) +
+            cos(phi) * sin(alpha2) * cos(gamma2) * sin(delta2) -
+            cos(phi) * cos(psi2) * sin(alpha2) * sin(gamma2) * cos(delta2) +
+            sin(phi) * sin(psi2) * sin(alpha2) * sin(gamma2)
+        ))
 
-    beta3 = np.degrees(np.arccos(
-        cos(alpha3) * cos(gamma3) * cos(delta3) +
-        cos(psi2) * cos(alpha3) * sin(gamma3) * sin(delta3) +
-        cos(theta) * sin(alpha3) * cos(gamma3) * sin(delta3) -
-        cos(theta) * cos(psi2) * sin(alpha3) * sin(gamma3) * cos(delta3) +
-        sin(theta) * sin(psi2) * sin(alpha3) * sin(gamma3)
-    ))
-    
-    beta4 = np.degrees(np.arccos(
-        cos(alpha4) * cos(gamma4) * cos(delta4) +
-        cos(psi1) * cos(alpha4) * sin(gamma4) * sin(delta4) +
-        cos(theta) * sin(alpha4) * cos(gamma4) * sin(delta4) -
-        cos(theta) * cos(psi1) * sin(alpha4) * sin(gamma4) * cos(delta4) +
-        sin(theta) * sin(psi1) * sin(alpha4) * sin(gamma4)
-    ))
+        beta3 = np.degrees(np.arccos(
+            cos(alpha3) * cos(gamma3) * cos(delta3) +
+            cos(psi2) * cos(alpha3) * sin(gamma3) * sin(delta3) +
+            cos(theta) * sin(alpha3) * cos(gamma3) * sin(delta3) -
+            cos(theta) * cos(psi2) * sin(alpha3) * sin(gamma3) * cos(delta3) +
+            sin(theta) * sin(psi2) * sin(alpha3) * sin(gamma3)
+        ))
+        
+        beta4 = np.degrees(np.arccos(
+            cos(alpha4) * cos(gamma4) * cos(delta4) +
+            cos(psi1) * cos(alpha4) * sin(gamma4) * sin(delta4) +
+            cos(theta) * sin(alpha4) * cos(gamma4) * sin(delta4) -
+            cos(theta) * cos(psi1) * sin(alpha4) * sin(gamma4) * cos(delta4) +
+            sin(theta) * sin(psi1) * sin(alpha4) * sin(gamma4)
+        ))
 
-    # Store calculated beta angles.
-    Betas.extend([beta1, beta2, beta3, beta4])
+        # Store calculated beta angles.
+        Betas.append([beta1, beta2, beta3, beta4])
     
     # Combine calculated angles and store in the output list.
-    for element in Deltas:
-        output.append([Alphas, Betas, Gammas, element])
+    for i in range(len(Deltas)):
+        output.append([Alphas, Betas[i], Gammas, Deltas[i]])
     
     return output
 
