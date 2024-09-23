@@ -36,7 +36,7 @@ In the first step, given four angles — $\delta_1$, $\delta_2$, $\delta_3$, and
 Building upon the first step, in this step both the delta angles ($\delta_1$, $\delta_2$, $\delta_3$, $\delta_4$) and the dihedral angles ($\varphi$, $\psi_2$, $\theta$, $\psi_1$) are used. This results in a system of nine polynomial equations with nine unknowns, allowing for the generation of flexible quadrilateral meshes of the elliptic type with more control. Now, we can choose both the delta and dihedral angles, offering greater flexibility in creating the desired mesh type.
 
 ### 3: Optimization Problem for Angle Matching
-In this stage, the optimization problem begins. Given a full set of angles—$\delta$, $\alpha$, $\beta$, $\gamma$—as well as the dihedral angles, the goal is to minimize the difference between the given angles and those calculated theoretically, while respecting the constraints imposed by the system of nine equations from step 2.
+In this stage, the optimization problem begins. Given a full set of angles — $\delta$, $\alpha$, $\beta$, $\gamma$—as well as the dihedral angles, the goal is to minimize the difference between the given angles and those calculated theoretically, while respecting the constraints imposed by the system of nine equations from step 2.
 
 ### 4: Normal-Based Sample Angle Generation
 In the final step, formulas are derived to compute unit normals to the faces of the quadrilateral mesh in various coordinate systems. Using these normals, sample angles of the mesh can be obtained. This is useful when only normals are provided, and not the angles directly.
