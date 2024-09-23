@@ -1,4 +1,11 @@
-# Flexible Quadrilateral Mesh Generator
+# Flexible Quadrilateral Mesh Generator (3x3 Case)
+
+<p align="center">
+  <img src="./your-svg-file.svg" alt="Example of 3x3 mesh" width="400"/>
+</p>
+
+<p align="center"><strong>Figure 1: Example of 3x3 mesh.</strong></p>
+
 
 A robust Python toolset for generating flexible quadrilateral meshes of equimodular elliptic type. This project is dedicated to solving optimization problems related to mesh generation and transformation, ensuring the creation of valid and non-self-intersecting quadrilateral meshes. The tools are designed to support complex mathematical computations, such as calculating normals, angles, and optimizing for specific mesh properties.
 
@@ -34,3 +41,9 @@ The core of the project lies in transforming given angles and constraints into a
    ```bash
    git clone https://github.com/nurmaton/Flexible-Quadrilateral-Mesh-Generator.git
    cd Flexible-Quadrilateral-Mesh-Generator
+   ```
+
+## License
+
+This project is licensed under the Apache License 2.0. See the [LICENSE](./LICENSE) file for more details.
+
