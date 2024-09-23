@@ -30,7 +30,7 @@ The core of the project lies in transforming given angles and constraints into a
 
 ## Overview of the PDF File
 ### 1: Polynomial System for Deltas
-In the first step, given four angles—$\delta_1$, $\delta_2$, $\delta_3$, and $\delta_4$—a system of four polynomial equations with four unknowns is generated. This system is used to create examples of quadrilateral flexible meshes of the elliptic type. At this stage, only the delta angles are selected to define the mesh structure.
+In the first step, given four angles — $\delta_1$, $\delta_2$, $\delta_3$, and $\delta_4$—a system of four polynomial equations with four unknowns is generated. This system is used to create examples of quadrilateral flexible meshes of the elliptic type. At this stage, only the delta angles are selected to define the mesh structure.
 
 ### 2: Polynomial System for Deltas and Dihedral Angles
 Building upon the first step, in this step both the delta angles ($\delta_1$, $\delta_2$, $\delta_3$, $\delta_4$) and the dihedral angles ($\varphi$, $\psi_2$, $\theta$, $\psi_1$) are used. This results in a system of nine polynomial equations with nine unknowns, allowing for the generation of flexible quadrilateral meshes of the elliptic type with more control. Now, we can choose both the delta and dihedral angles, offering greater flexibility in creating the desired mesh type.
